@@ -38,10 +38,10 @@
             if (self.options.picker === true) {
                 var selectText = self.$select.find('> option:selected').text();
                 self.$icon = $('<span class="simplecolorpicker icon"'
-                + ' title="' + selectText + '"'
-                    /*+ ' style="background-color: ' + self.$select.val() + ';"'*/
-                + ' role="button" tabindex="0">'
-                + '</span>').insertAfter(self.$select);
+                  + ' title="' + selectText + '"'
+                      /*+ ' style="background-color: ' + self.$select.val() + ';"'*/
+                  + ' role="button" tabindex="0">'
+                  + '</span>').insertAfter(self.$select);
                 self.$icon[0].className = self.$icon[0].className.replace(/(^|\s)g-material.*?(\s|$)/g, ' ');
 
 
@@ -89,13 +89,13 @@
                 }
 
                 var $colorSpan = $('<span class="color"'
-                + title
-                    /*+ ' style="background-color: ' + color + ';"'*/
-                + ' data-color="' + color + '"'
-                + selected
-                + disabled
-                + role + '>'
-                + '</span>');
+                  + title
+                      /*+ ' style="background-color: ' + color + ';"'*/
+                  + ' data-color="' + color + '"'
+                  + selected
+                  + disabled
+                  + role + '>'
+                  + '</span>');
 
                 self.$colorList.append($colorSpan);
                 $colorSpan[0].className = $colorSpan[0].className.replace(/(^|\s)g-material.*?(\s|$)/g, ' ');
@@ -152,7 +152,7 @@
          * It also changes the HTML select value, this will emit the 'change' event.
          */
         selectColorSpan: function($colorSpan) {
-            var color = $colorSpan.val();
+            var color = $colorSpan.data('color');
             var title = $colorSpan.prop('title');
 
             // Mark this span as the selected one
@@ -216,8 +216,8 @@
         // For HTML element passed to the plugin
         return this.each(function() {
             var $this = $(this),
-                data = $this.data('simplecolorpicker'),
-                options = typeof option === 'object' && option;
+              data = $this.data('simplecolorpicker'),
+              options = typeof option === 'object' && option;
             if (data === undefined) {
                 $this.data('simplecolorpicker', (data = new SimpleColorPicker(this, options)));
             }
